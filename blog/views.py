@@ -21,10 +21,10 @@ def add_post_post():
 def add_post_get():
     return render_template("add_post.html")
   
-@app.route("/post/<int:i>/edit")
-def edit_post_get(i):
+@app.route("/post/<int:post>/edit")
+def edit_post_get(post):
   posts = session.query(Post)
-  posts = posts.filter_by(id=i).first()
+  posts = posts.filter_by(id=post+1).first()
   
   return render_template("edit_post.html", 
                          post_content=posts.content,
